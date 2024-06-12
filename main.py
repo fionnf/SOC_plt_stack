@@ -27,7 +27,10 @@ voltage = reind_df['Ewe/V']
 current = reind_df['I/mA']
 charge = reind_df['(Q-Qo)/mA.h']
 
-fig, ax1 = plt.subplots(nrows=3, ncols=1, figsize=(10, 12))
+plt.rcParams.update({'font.size': 14, 'font.weight': 'bold'})
+plt.rcParams['axes.labelweight'] = 'bold'
+
+fig, ax1 = plt.subplots(nrows=3, ncols=1, figsize=(12, 10))
 
 # Plot voltage and current on the first subplot
 ax1[0].plot(time, voltage, color='b', label='Voltage')
@@ -41,13 +44,13 @@ ax2.tick_params('y', colors='r')
 
 # Plot charge on the second subplot
 ax1[1].plot(time, charge, color='g', label='Charge')
-ax1[1].set_ylabel('(Q-Qo) (mA.h)', color='g')
+ax1[1].set_ylabel('(Q-Qo) (mAh)', color='g')
 ax1[1].tick_params('y', colors='g')
 
 # Plot chemical shift from Excel data on the third subplot
 ax1[2].plot(time_excel, chemical_shift_excel, 'x', color='m', label='Chemical Shift (Excel)')
 ax1[2].set_xlabel('Time (s)')
-ax1[2].set_ylabel('Chemical Shift (ppm)', color='m')
+ax1[2].set_ylabel(r'$\delta$OCF$_3$ (ppm)', color='m')
 ax1[2].tick_params('y', colors='m')
 
 plt.subplots_adjust(hspace=0)  # Adjust the spacing between subplots
